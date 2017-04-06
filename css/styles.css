@@ -7,13 +7,13 @@
 .X {
   height: 100%;
   width: 100%;
-  background-color: lightgrey;
+  background-color: white;
 }
 
 .O {
   height: 100%;
   width: 100%;
-  background-color: lightpink;
+  background-color: white;
 }
 
 .col-xs-4 {

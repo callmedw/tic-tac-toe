@@ -1,17 +1,19 @@
 // // BUSINESS LOGIC;
-// winningCombos =
-// [["s1","s2","s3"],
-// ["s4","s5","s6"],
-// ["s7","s8","s9"],
-// ["s3","s5","s7"],
-// ["s1","s5","s9"],
-// ["s3","s6","s9"],
-// ["s2","s5","s8"],
-// ["s1","s4","s7"]];
-//
-// var boardArray = [];
-//
-// spaces = [1,2,3,4,5,6,7,8,9];
+winArray =
+[["s1","s2","s3"],
+["s4","s5","s6"],
+["s7","s8","s9"],
+["s3","s5","s7"],
+["s1","s5","s9"],
+["s3","s6","s9"],
+["s2","s5","s8"],
+["s1","s4","s7"]];
+
+Player.prototype.winner = function() {
+  if (this.positions.toString() === ("s1","s2","s3")) {
+    return true;
+  }
+}
 
 function Player(mark, active) {
   this.mark = mark;
@@ -19,27 +21,11 @@ function Player(mark, active) {
   this.active = active;
 }
 
-// Player.prototype.addX = function(){
-//   this.mark.boardArray.push();
-// }
-
-Player.prototype.switchTurn = function() {
-  for(i=0;i < newGame.totalPositions.length; i++)
-  player.positions[i] % 2 === 0;
-}
-
-// function Space() {
-//   spaces =[1,2,3,4,5,6,7,8,9];
-// }
-
-// Space.prototype.markedBy
 function Game(player1){
   this.players = [];
   this.currentPlayer = player1;
   this.totalPositions = [];
 }
-
-
 
 // UI LOGIC
 $(document).ready(function(){
@@ -49,7 +35,6 @@ $(document).ready(function(){
   var newGame = new Game(player1);
   newGame.players.push(player1, player2);
 
-
   $(".box").click(function(){
 
     if (player1.active === 1) {
@@ -57,40 +42,21 @@ $(document).ready(function(){
     var squareId = $(this).attr("id");
     player1.positions.push(squareId);
     newGame.totalPositions.push(squareId);
-    console.log(newGame.totalPositions);
-    console.log(squareId);
+    console.log(player1.positions);
     player1.active = 0;
-    // player2.active = 1;
     } else {
       $(this).html(player2.mark);
       var squareId = $(this).attr("id");
       player2.positions.push(squareId);
       newGame.totalPositions.push(squareId);
-      console.log(newGame.totalPositions);
-      console.log(squareId);
+      console.log(player2.positions);
       player1.active = 1;
-      // player2.active = 0;
-      }
-    // $("#player1header").toggle();
-    // $("#player2header").toggle();
-    // $(".board").create method to switch players();
-    // $(".X").toggle();
-    // console.log(player1.positions);
+    }
+    if (player1.winner() === true) {
+      alert("you win!");
+    }
+    if (player2.winner() === true) {
+      alert("you win!");
+    }
   });
-
-  // $(".O").click(function(){
-  //   $(this).text("O");
-  // });
-
-    // $(".O").show();
-    // $(".X").hide();
-  // });
-
-  // $(".O").click(function(){
-  //
-  // });
-  //
-  // $(".term-c").click(function(){
-  //   $(".definition-c").toggle();
-  // });
 });
