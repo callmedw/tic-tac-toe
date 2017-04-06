@@ -11,9 +11,10 @@
 }
 
 .O {
-  height: 100%;
+  height: auto;
   width: 100%;
   background-color: white;
+  border: solid black 2px;
 }
 
 .col-xs-4 {

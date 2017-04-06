@@ -1,5 +1,5 @@
 // // BUSINESS LOGIC;
-winArray =
+var winArray =
 [["s1","s2","s3"],
 ["s4","s5","s6"],
 ["s7","s8","s9"],
@@ -9,10 +9,12 @@ winArray =
 ["s2","s5","s8"],
 ["s1","s4","s7"]];
 
-Player.prototype.winner = function() {
-  if (this.positions.toString() === ("s1","s2","s3")) {
-    return true;
-  }
+Player.prototype.winner = function(x) {
+  return winArray.some(function(y){
+    return y.every(function(num){
+        return x.includes(num);
+    });
+  });
 }
 
 function Player(mark, active) {
